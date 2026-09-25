@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reduce image size to 100KB online for free. Perfect for forms, documents, and signatures. Fast, secure, and easy to use. Compress JPG, PNG to 100KB instantly.">
+    <meta name="keywords" content="image to 100kb, reduce image to 100kb, compress image to 100kb, jpg to 100kb, png to 100kb, image resize to 100kb, 100kb image converter, image size reducer to 100kb">
+    <title>Image to 100KB – Reduce Image Size to 100KB Online Free | CMI Tools</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .tool-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .tool-page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .tool-page-header h1 {
+            font-size: 2.5rem;
+            color: #00ffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        .tool-page-header p {
+            color: #a0a0a0;
+            font-size: 1.1rem;
+        }
+        .tool-container {
+            background: rgba(20, 20, 40, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        .upload-area {
+            border: 3px dashed rgba(0, 255, 255, 0.5);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .upload-area:hover {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        .upload-area.dragover {
+            background: rgba(0, 0, 0, 0.6);
+            border-color: #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+        .upload-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form-group input[type="range"] {
+            margin: 10px 0;
+        }
+        .compress-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            font-weight: 600;
+        }
+        .compress-btn:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px) scale(1.02);
+        }
+        .compress-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result-area {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            display: none;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+        .result-area.show {
+            display: block;
+        }
+        .result-area img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin: 1rem 0;
+            max-height: 300px;
+            object-fit: contain;
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+            border: none;
+            text-align: center;
+            min-width: 150px;
+            font-weight: 500;
+        }
+        .download-btn:hover {
+            background: #1525d2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .info-section {
+            background: rgba(20, 20, 40, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        .info-section h2 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        .info-section p {
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .info-section ul {
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin-left: 2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            transform: translateX(-5px);
+        }
+        .size-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .size-info span {
+            font-weight: 600;
+            color: #667eea;
+        }
+        .quick-sizes {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .quick-size-btn {
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #e0e0e0;
+        }
+        .quick-size-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        .quick-size-btn.active {
+            background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+            color: white;
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="tool-page">
+        <a href="index.html" class="back-link">← Back to Tools</a>
+        
+        <div class="tool-page-header">
+            <h1>Image to 100KB</h1>
+            <p>Reduce your image size to 100KB instantly - Perfect for forms & documents</p>
+        </div>
+
+        <div class="tool-container">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📷</div>
+                <h3>Drag & Drop Image Here</h3>
+                <p>or click to select file</p>
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            </div>
+
+            <div class="form-group">
+                <label>Quick Select Target Size:</label>
+                <div class="quick-sizes">
+                    <button class="quick-size-btn active" data-size="100">100 KB</button>
+                    <button class="quick-size-btn" data-size="50">50 KB</button>
+                    <button class="quick-size-btn" data-size="20">20 KB</button>
+                    <button class="quick-size-btn" data-size="200">200 KB</button>
+                    <button class="quick-size-btn" data-size="500">500 KB</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Custom Size (KB):</label>
+                <input type="number" id="customSize" value="100" placeholder="Enter target size in KB">
+            </div>
+
+            <div class="form-group">
+                <label>Output Format:</label>
+                <select id="outputFormat">
+                    <option value="jpeg">JPEG (Recommended)</option>
+                    <option value="png">PNG</option>
+                    <option value="webp">WebP</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Quality (0-100): <span id="qualityValue">80%</span></label>
+                <input type="range" id="quality" min="0" max="100" value="80">
+            </div>
+
+            <button class="compress-btn" id="compressBtn" disabled>Reduce to 100KB</button>
+
+            <div class="result-area" id="resultArea">
+                <h4>Compressed Image:</h4>
+                <img id="compressedImage" style="max-width: 100%; display: none;">
+                <div class="size-info">
+                    <span>Original: <span id="originalSize">-</span></span>
+                    <span>Compressed: <span id="compressedSize">-</span></span>
+                    <span>Reduction: <span id="reduction">-</span></span>
+                </div>
+                <button class="download-btn" id="downloadBtn">Download Compressed Image</button>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>About Image to 100KB Tool</h2>
+            <p>Our Image to 100KB tool is specifically designed to help you reduce image file sizes to exactly 100KB or your desired target size. This is the most common size requirement for online forms, government applications, job portals, and document submissions.</p>
+            
+            <h2>How to Use</h2>
+            <ul>
+                <li>Upload your image by clicking or dragging and dropping</li>
+                <li>Select your target size (100KB, 50KB, 20KB, 200KB, 500KB, or custom)</li>
+                <li>Choose output format (JPEG recommended for best compression)</li>
+                <li>Adjust quality slider if needed</li>
+                <li>Click "Reduce to 100KB" to process</li>
+                <li>Download your compressed image instantly</li>
+            </ul>
+
+            <h2>Features</h2>
+            <ul>
+                <li>✅ Target specific sizes (100KB, 50KB, 20KB, 200KB, 500KB)</li>
+                <li>✅ Custom size option for any requirement</li>
+                <li>✅ Multiple output formats (JPEG, PNG, WebP)</li>
+                <li>✅ Quality control for optimal results</li>
+                <li>✅ Shows size comparison and reduction percentage</li>
+                <li>✅ Fast processing - results in seconds</li>
+                <li>✅ 100% free - no registration or signup</li>
+                <li>✅ Secure - all processing happens in your browser</li>
+                <li>✅ Works on mobile, tablet, and desktop</li>
+            </ul>
+
+            <h2>Why 100KB?</h2>
+            <p>100KB is the standard file size limit for many official purposes:</p>
+            <ul>
+                <li><strong>Government Forms:</strong> Most government applications require photos under 100KB</li>
+                <li><strong>Job Portals:</strong> Resume and profile pictures often need to be under 100KB</li>
+                <li><strong>Bank Applications:</strong> KYC documents and signatures typically require 100KB or less</li>
+                <li><strong>University Admissions:</strong> Application forms and documents often have 100KB limits</li>
+                <li><strong>Online Exams:</strong> Photo uploads for exam registrations</li>
+                <li><strong>Passport & Visa Applications:</strong> Many online applications use 100KB as the standard</li>
+            </ul>
+
+            <h2>Common Use Cases</h2>
+            <ul>
+                <li>Passport size photos for applications (typically 20KB-100KB)</li>
+                <li>Signature images for forms and documents</li>
+                <li>Profile pictures for job portals and professional networks</li>
+                <li>ID document uploads for verification</li>
+                <li>Photo submissions for competitive exams</li>
+                <li>Document attachments for online applications</li>
+            </ul>
+
+            <h2>Tips for Best Results</h2>
+            <ul>
+                <li>Use JPEG format for photographs - it provides the best compression</li>
+                <li>Use PNG for images with text, logos, or transparent backgrounds</li>
+                <li>Start with quality at 80% and reduce if size is still too large</li>
+                <li>For very small targets (20KB-50KB), consider cropping the image first</li>
+                <li>Ensure your original image is high quality for best results after compression</li>
+                <li>If quality is poor after compression, try reducing image dimensions first</li>
+            </ul>
+
+            <h2>Other Popular Sizes</h2>
+            <ul>
+                <li><strong>20KB:</strong> Passport photos, small signatures</li>
+                <li><strong>50KB:</strong> ID photos, document signatures</li>
+                <li><strong>100KB:</strong> Standard form submissions, profile pictures</li>
+                <li><strong>200KB:</strong> Higher quality photos, detailed documents</li>
+                <li><strong>500KB:</strong> High-resolution images, portfolios</li>
+            </ul>
+
+            <h2>Frequently Asked Questions</h2>
+            <ul>
+                <li><strong>Q: Will this reduce image quality?</strong><br>
+                A: Some quality loss is inevitable when compressing, but our tool optimizes to maintain the best possible quality at your target size.</li>
+                
+                <li><strong>Q: Is my data safe?</strong><br>
+                A: Yes! All image processing happens directly in your browser. Your images are never uploaded to any server.</li>
+                
+                <li><strong>Q: What formats are supported?</strong><br>
+                A: We support JPG, JPEG, PNG, WebP, and most common image formats.</li>
+                
+                <li><strong>Q: Can I use this on mobile?</strong><br>
+                A: Yes, our tool works perfectly on all devices including smartphones and tablets.</li>
+                
+                <li><strong>Q: Is there a file size limit?</strong><br>
+                A: No, you can upload images of any size and we'll compress them to your target.</li>
+            </ul>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-links" style="margin-bottom: 1rem;">
+                    <a href="contact.html" style="color: white; margin: 0 10px; text-decoration: none;">Contact Us</a>
+                    <a href="privacy-policy.html" style="color: white; margin: 0 10px; text-decoration: none;">Privacy Policy</a>
+                    <a href="terms.html" style="color: white; margin: 0 10px; text-decoration: none;">Terms & Conditions</a>
+                    <a href="disclaimer.html" style="color: white; margin: 0 10px; text-decoration: none;">Disclaimer</a>
+                </div>
+                <p>&copy; 2026 Truetools. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const customSize = document.getElementById('customSize');
+        const outputFormat = document.getElementById('outputFormat');
+        const quality = document.getElementById('quality');
+        const qualityValue = document.getElementById('qualityValue');
+        const compressBtn = document.getElementById('compressBtn');
+        const resultArea = document.getElementById('resultArea');
+        const compressedImage = document.getElementById('compressedImage');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const originalSizeSpan = document.getElementById('originalSize');
+        const compressedSizeSpan = document.getElementById('compressedSize');
+        const reductionSpan = document.getElementById('reduction');
+        const quickSizeBtns = document.querySelectorAll('.quick-size-btn');
+
+        let uploadedFile = null;
+        let compressedDataUrl = null;
+        let targetKB = 100;
+
+        uploadArea.addEventListener('click', () => imageInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        quickSizeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                quickSizeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                targetKB = parseInt(btn.dataset.size);
+                customSize.value = targetKB;
+                compressBtn.textContent = `Reduce to ${targetKB}KB`;
+            });
+        });
+
+        customSize.addEventListener('input', () => {
+            targetKB = parseInt(customSize.value) || 100;
+            quickSizeBtns.forEach(btn => {
+                btn.classList.toggle('active', parseInt(btn.dataset.size) === targetKB);
+            });
+            compressBtn.textContent = `Reduce to ${targetKB}KB`;
+        });
+
+        quality.addEventListener('input', () => {
+            qualityValue.textContent = quality.value + '%';
+        });
+
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please select an image file');
+                return;
+            }
+            uploadedFile = file;
+            compressBtn.disabled = false;
+            uploadArea.innerHTML = `
+                <div class="upload-icon">✓</div>
+                <h3>${file.name}</h3>
+                <p>${(file.size / 1024).toFixed(2)} KB</p>
+            `;
+        }
+
+        compressBtn.addEventListener('click', () => {
+            if (!uploadedFile) return;
+
+            compressBtn.disabled = true;
+            compressBtn.textContent = 'Compressing...';
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+
+                    const format = outputFormat.value;
+                    const qualityValue = parseInt(quality.value) / 100;
+                    
+                    let currentQuality = qualityValue;
+                    let dataUrl = canvas.toDataURL(`image/${format}`, currentQuality);
+                    let attempts = 0;
+                    const maxAttempts = 20;
+
+                    const compressLoop = () => {
+                        const currentSize = (dataUrl.length * 3) / 4 / 1024;
+                        
+                        if (currentSize <= targetKB || attempts >= maxAttempts || currentQuality <= 0.1) {
+                            compressedDataUrl = dataUrl;
+                            compressedImage.src = dataUrl;
+                            compressedImage.style.display = 'block';
+                            
+                            originalSizeSpan.textContent = (uploadedFile.size / 1024).toFixed(2) + ' KB';
+                            compressedSizeSpan.textContent = currentSize.toFixed(2) + ' KB';
+                            const reduction = ((uploadedFile.size / 1024 - currentSize) / (uploadedFile.size / 1024) * 100).toFixed(1);
+                            reductionSpan.textContent = reduction + '%';
+                            
+                            resultArea.classList.add('show');
+                            compressBtn.textContent = `Reduce to ${targetKB}KB`;
+                            compressBtn.disabled = false;
+                            return;
+                        }
+
+                        currentQuality -= 0.05;
+                        attempts++;
+                        dataUrl = canvas.toDataURL(`image/${format}`, currentQuality);
+                        setTimeout(compressLoop, 10);
+                    };
+
+                    compressLoop();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(uploadedFile);
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            if (!compressedDataUrl) return;
+            
+            const link = document.createElement('a');
+            link.download = `compressed-image-${targetKB}kb.` + outputFormat.value;
+            link.href = compressedDataUrl;
+            link.click();
+        });
+    </script>
+</body>
+</html>
